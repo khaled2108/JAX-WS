@@ -1,5 +1,6 @@
 package com.jax.ws.service.impl;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer findById(Long id) {
 		LOGGER.info("id::" + id);
-		return customerRepository.findOne(id);
+		Optional<Customer> customer = customerRepository.findById(id);
+		return customer.get();
 	}
 }

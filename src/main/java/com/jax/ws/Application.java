@@ -21,8 +21,8 @@ public class Application {
     }
     
     @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
-        return new ServletRegistrationBean(new WSSpringServlet(), "/customer");
+    public ServletRegistrationBean<WSSpringServlet> servletRegistrationBean() {
+        return new ServletRegistrationBean<WSSpringServlet>(new WSSpringServlet(), "/customer");
     }
     
     @Autowired
@@ -33,7 +33,6 @@ public class Application {
         return bind(customerEndpoint, "/customer");
     }
 
-    
     private SpringBinding bind(CustomerWebMethods endpoint, String url) throws Exception {
         SpringService springService = new SpringService();
         springService.setBean(endpoint);
